@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNCT 2026 - Ciência Delas | Semana Nacional de Ciência e Tecnologia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Gochi+Hand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #2a1240;
+      --bg-light: #fdfcfc;
+      --text: #1f1f29;
+      --text-muted: rgba(31, 31, 41, 0.5);
+      --text-gray: #858593;
+      --footer-text: #7c7c88;
+      --primary: #604696;
+      --primary-border: #493270;
+      --primary-shadow: #352250;
+      --accent-red: #bc1313;
+      --accent-orange: #f07d00;
+      --accent-magenta: #c3005d;
+      --accent-yellow: #fecc00;
+      --accent-tan: #cba785;
+      --beta-bg: #fecc00;
+      --beta-text: #7a4e00;
+      --note-bg: #ffe7d1;
+      --note-text: #634200;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--bg-light);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      background: rgba(253, 252, 252, 0.97);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .hero-logo-card {
+      background: var(--bg-light);
+      padding: 28px 36px;
+      border-radius: 24px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+      display: inline-block;
+    }
+
+    .hero-logo {
+      max-width: 560px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .badge-beta {
+      background: var(--accent-yellow);
+      color: var(--beta-text);
+      padding: 6px 16px;
+      border-radius: 59px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-family: 'Gochi Hand', cursive;
+      letter-spacing: 0.5px;
+      border: 1.5px solid rgba(122, 78, 0, 0.25);
+    }
+
+
+    /* Sections */
+    main {
+      padding-top: 80px;
+    }
+
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 40px;
+    }
+
+    /* Hero / Intro Dark */
+    #intro {
+      background: var(--bg-dark);
+      color: white;
+      padding: 80px 40px 60px;
+      display: block;
+      text-align: center;
+    }
+
+    .intro-hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .intro-subtitle {
+      font-size: 28px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      max-width: 800px;
+    }
+
+    .scroll-indicator {
+      margin-top: 60px;
+      color: var(--accent-yellow);
+      font-size: 14px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .intro-chapter {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .chapter-icon {
+      width: 72px;
+      height: 72px;
+      display: block;
+    }
+
+    .chapter-text {
+      font-size: 36px;
+      font-weight: 800;
+      max-width: 900px;
+      line-height: 1.3;
+      letter-spacing: -1.5px;
+    }
+
+    /* Problem Section */
+    #problem {
+      background: linear-gradient(to right, var(--bg-dark) 0%, #9ba5ff 50%, var(--bg-light) 100%);
+      padding: 56px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .problem-content {
+      background: var(--bg-light);
+      padding: 48px 48px;
+      border-radius: 30px;
+      max-width: 950px;
+      text-align: center;
+    }
+
+    .problem-content h1 {
+      font-size: 60px;
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      font-weight: 800;
+    }
+
+    /* Meet Section */
+    #meet {
+      background: linear-gradient(135deg, #6b2f9e 0%, #3d1152 100%);
+      padding: 64px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .meet-content {
+      text-align: center;
+      max-width: 695px;
+    }
+
+    .meet-content h1 {
+      font-size: 59px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 32px;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .meet-logo {
+      width: 119px;
+      height: 119px;
+      background: var(--primary);
+      border-radius: 20px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      color: white;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .meet-title {
+      font-size: 90px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--accent-yellow);
+      line-height: 1;
+    }
+
+    /* Value Section */
+    #value {
+      background: var(--bg-light);
+      padding: 64px 40px;
+    }
+
+    .value-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .value-logo {
+      width: 119px;
+      height: 119px;
+      background: var(--primary);
+      border-radius: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 50px;
+    }
+
+    .value-title {
+      font-size: 60px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .value-lead {
+      font-size: 30px;
+      font-weight: 600;
+      color: #52525e;
+      line-height: 1.4;
+      margin-bottom: 32px;
+    }
+
+    .scientists-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .scientist-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      border: 1px solid rgba(31, 31, 41, 0.1);
+      box-shadow: 0 6px 24px rgba(31, 31, 41, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .scientist-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .scientist-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      display: block;
+      border: 4px solid var(--accent-yellow);
+    }
+
+    .scientist-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .scientist-years {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-magenta);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .scientist-field {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .scientist-bio {
+      font-size: 15px;
+      color: #5a5a66;
+      line-height: 1.5;
+    }
+
+    /* Testimonials */
+    #testimonials {
+      background: var(--bg-light);
+      padding: 64px 40px;
+    }
+
+    .testimonial-center {
+      max-width: 630px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-text {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .testimonial-text em {
+      font-style: italic;
+      color: var(--primary);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-note {
+      background: var(--note-bg);
+      padding: 30px;
+      border-radius: 20px;
+      transform: rotate(var(--rotation, 5deg));
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-note:nth-child(1) { --rotation: -14deg; }
+    .testimonial-note:nth-child(2) { --rotation: 8deg; }
+    .testimonial-note:nth-child(3) { --rotation: -9deg; }
+    .testimonial-note:nth-child(4) { --rotation: 13deg; }
+
+    .testimonial-quote {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--note-text);
+      line-height: 1.3;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 17px;
+      color: #634200;
+      font-weight: 600;
+    }
+
+    /* Features */
+    #features {
+      background: var(--bg-light);
+      padding: 56px 40px;
+    }
+
+    .features-container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 65px;
+      overflow: hidden;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-image {
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(0, 0, 0, 0.2);
+      font-size: 100px;
+      min-height: 400px;
+    }
+
+    .feature-content {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-badge {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 59px;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      width: fit-content;
+    }
+
+    .feature-card:nth-child(1) .feature-badge {
+      background: #ffe3cc;
+      color: #a05400;
+    }
+
+    .feature-card:nth-child(2) .feature-badge {
+      background: #e2d9f5;
+      color: #46316e;
+    }
+
+    .feature-card:nth-child(3) .feature-badge {
+      background: #fbd6e6;
+      color: #8a0043;
+    }
+
+    .feature-title {
+      font-size: 50px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .feature-desc {
+      font-size: 23px;
+      color: #4a4a54;
+      line-height: 1.4;
+    }
+
+    /* Radar */
+    #radar {
+      background: #191834;
+      padding: 64px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .radar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .radar-badge {
+      background: #393777;
+      color: #c9c7ff;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 59px;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .radar-title {
+      font-size: 58px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #ceccff;
+      margin-bottom: 20px;
+    }
+
+    .radar-desc {
+      font-size: 30px;
+      color: #c9c7ff;
+      line-height: 1.4;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .radar-image {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 1144px;
+      height: 751px;
+      background: rgba(96, 70, 150, 0.25);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-light);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 60px 40px;
+      text-align: center;
+      color: var(--footer-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-logo-link {
+      display: inline-block;
+      border-radius: 8px;
+    }
+
+    .footer-logo-link:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+    .footer-logo {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+
+    footer p {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    /* CTA Giant */
+    .cta-giant {
+      display: block;
+      width: 100%;
+      max-width: 1200px;
+      margin: 56px auto;
+      padding: 56px 40px;
+      background: var(--primary);
+      border: none;
+      border-radius: 50px;
+      font-size: 100px;
+      font-weight: 900;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(-10px 10px 0 var(--primary-shadow));
+    }
+
+    .cta-giant:hover {
+      transform: translate(-5px, 5px);
+      filter: drop-shadow(-8px 8px 0 var(--primary-shadow));
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .site-header {
+        padding: 0 30px;
+      }
+
+      section {
+        padding: 60px 30px;
+      }
+
+      .hero-logo-card {
+        padding: 20px 24px;
+      }
+
+      .hero-logo {
+        max-width: 420px;
+      }
+
+      .intro-subtitle {
+        font-size: 22px;
+      }
+
+      .chapter-text {
+        font-size: 28px;
+      }
+
+      .problem-content h1 {
+        font-size: 48px;
+      }
+
+      .meet-content h1 {
+        font-size: 48px;
+      }
+
+      .meet-title {
+        font-size: 72px;
+      }
+
+      .value-title {
+        font-size: 48px;
+      }
+
+      .scientists-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-card {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-image {
+        min-height: 250px;
+      }
+
+      .cta-giant {
+        font-size: 64px;
+        padding: 60px 30px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header {
+        height: 60px;
+        padding: 0 20px;
+        gap: 10px;
+      }
+
+      main {
+        padding-top: 60px;
+      }
+
+      .header-logo {
+        height: 36px;
+      }
+
+      .badge-beta {
+        font-size: 11px;
+      }
+
+      .hero-logo-card {
+        padding: 14px 18px;
+        border-radius: 16px;
+      }
+
+      .hero-logo {
+        max-width: 300px;
+      }
+
+      .intro-subtitle {
+        font-size: 16px;
+      }
+
+      .chapter-icon {
+        width: 56px;
+        height: 56px;
+      }
+
+      .chapter-text {
+        font-size: 20px;
+      }
+
+      .problem-content h1 {
+        font-size: 32px;
+      }
+
+      .meet-content h1 {
+        font-size: 32px;
+      }
+
+      .meet-title {
+        font-size: 48px;
+      }
+
+      .value-title {
+        font-size: 32px;
+      }
+
+      .value-lead {
+        font-size: 18px;
+      }
+
+      .scientists-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-text {
+        font-size: 20px;
+      }
+
+      .feature-content {
+        padding: 30px;
+      }
+
+      .feature-title {
+        font-size: 32px;
+      }
+
+      .feature-desc {
+        font-size: 16px;
+      }
+
+      .radar-title {
+        font-size: 36px;
+      }
+
+      .radar-desc {
+        font-size: 18px;
+      }
+
+      .cta-giant {
+        font-size: 40px;
+        padding: 40px 20px;
+      }
+
+      section {
+        padding: 40px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo-group">
+      <img src="logo-ciencia-delas.png" alt="Ciência Delas - SNCT 2026" class="header-logo">
+      <span class="badge-beta">2026</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Intro Section -->
+    <section id="intro">
+      <div class="intro-hero">
+        <div class="hero-logo-card">
+          <img src="logo-ciencia-delas.png" alt="Ciência Delas - SNCT 2026" class="hero-logo">
+        </div>
+        <p class="intro-subtitle">Uma história de inovação e inclusão na ciência brasileira</p>
+        <div class="scroll-indicator">↓ Scroll para continuar</div>
+      </div>
+
+      <div class="intro-chapter">
+        <img src="icons/icon-book.png" alt="" class="chapter-icon" aria-hidden="true">
+        <h2 class="chapter-text">Tudo começou com um sonho: visibilizar as mulheres que fazem ciência</h2>
+      </div>
+
+      <div class="intro-chapter">
+        <img src="icons/icon-award.png" alt="" class="chapter-icon" aria-hidden="true">
+        <h2 class="chapter-text">Histórias invisibilizadas moldaram a ciência moderna</h2>
+      </div>
+
+      <div class="intro-chapter">
+        <img src="icons/icon-monitor.png" alt="" class="chapter-icon" aria-hidden="true">
+        <h2 class="chapter-text">O Brasil reage: celebrando mulheres na inovação</h2>
+      </div>
+
+      <div class="intro-chapter">
+        <img src="icons/icon-chart.png" alt="" class="chapter-icon" aria-hidden="true">
+        <h2 class="chapter-text">01 a 04 de dezembro: uma semana inteira de ciência</h2>
+      </div>
+
+      <div class="intro-chapter">
+        <img src="icons/icon-flag.png" alt="" class="chapter-icon" aria-hidden="true">
+        <h2 class="chapter-text">Até que chegou a hora de reunir tudo: SNCT 2026</h2>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+      <div class="problem-content">
+        <h1>As mulheres são protagonistas na produção de conhecimento científico. Historicamente invisibilizadas, suas contribuições moldaram a ciência moderna. A SNCT 2026 celebra suas trajetórias, inspira novas gerações e reafirma nosso compromisso com a inclusão, equidade e superação das desigualdades estruturais.</h1>
+      </div>
+    </section>
+
+    <!-- Meet Section -->
+    <section id="meet">
+      <div class="meet-content">
+        <h1>É tempo de contar histórias diferentes</h1>
+        <h1>Histórias de mulheres que transformam a ciência</h1>
+        <div class="meet-logo">💜</div>
+        <div class="meet-title">Ciência Delas</div>
+      </div>
+    </section>
+
+    <!-- Value Section -->
+    <section id="value">
+      <div class="value-container">
+        <div class="value-logo">🔬</div>
+        <h1 class="value-title">Mulheres que Fazem Ciência</h1>
+        <p class="value-lead">Conheça as trajetórias de cientistas que inspiram novas gerações no Brasil e no mundo.</p>
+        <div class="scientists-grid">
+          <div class="scientist-card">
+            <img src="scientists/nise-da-silveira.jpg" alt="Retrato de Nise da Silveira" class="scientist-photo">
+            <h2 class="scientist-name">Nise da Silveira</h2>
+            <p class="scientist-years">1905 – 1999</p>
+            <p class="scientist-field">Psiquiatria</p>
+            <p class="scientist-bio">Médica psiquiatra que revolucionou o tratamento da saúde mental no país, substituindo métodos agressivos por terapia ocupacional, arte e afeto.</p>
+          </div>
+
+          <div class="scientist-card">
+            <img src="scientists/jaqueline-goes.jpg" alt="Retrato de Jaqueline Goes de Jesus" class="scientist-photo">
+            <h2 class="scientist-name">Jaqueline Goes de Jesus</h2>
+            <p class="scientist-years">1989 – presente</p>
+            <p class="scientist-field">Biomedicina & Genômica</p>
+            <p class="scientist-bio">Biomédica que liderou a equipe responsável pelo sequenciamento do genoma do vírus SARS-CoV-2 (COVID-19) no Brasil em tempo recorde.</p>
+          </div>
+
+          <div class="scientist-card">
+            <img src="scientists/mayana-zatz.jpg" alt="Retrato de Mayana Zatz" class="scientist-photo">
+            <h2 class="scientist-name">Mayana Zatz</h2>
+            <p class="scientist-years">1947 – presente</p>
+            <p class="scientist-field">Genética</p>
+            <p class="scientist-bio">Geneticista e professora da USP, referência mundial em pesquisas sobre doenças neuromusculares e distrofias musculares.</p>
+          </div>
+
+          <div class="scientist-card">
+            <img src="scientists/enedina-marques.jpg" alt="Retrato de Enedina Alves Marques" class="scientist-photo">
+            <h2 class="scientist-name">Enedina Alves Marques</h2>
+            <p class="scientist-years">1913 – 1981</p>
+            <p class="scientist-field">Engenharia Civil</p>
+            <p class="scientist-bio">Primeira mulher negra a se formar em engenharia civil no Brasil (pela UFPR em 1945), com grande atuação em obras de infraestrutura no Paraná.</p>
+          </div>
+
+          <div class="scientist-card">
+            <img src="scientists/sonja-ashauer.jpg" alt="Retrato de Sonja Ashauer" class="scientist-photo">
+            <h2 class="scientist-name">Sonja Ashauer</h2>
+            <p class="scientist-years">1923 – 1948</p>
+            <p class="scientist-field">Física</p>
+            <p class="scientist-bio">Primeira mulher brasileira a concluir doutorado em física, pela Universidade de Cambridge, na Inglaterra, sob orientação do Nobel Paul Dirac.</p>
+          </div>
+
+          <div class="scientist-card">
+            <img src="scientists/melania-amorim.jpg" alt="Retrato de Melania Amorim" class="scientist-photo">
+            <h2 class="scientist-name">Melania Amorim</h2>
+            <p class="scientist-years">Atuante</p>
+            <p class="scientist-field">Ginecologia & Obstetrícia</p>
+            <p class="scientist-bio">Médica pela UFPB e doutora em Tocoginecologia pela Unicamp, referência em saúde materno-infantil, parto humanizado e direitos sexuais e reprodutivos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <div class="testimonial-center">
+        <p class="testimonial-text">A SNCT é mais que <em>um evento sobre ciência</em>, é uma experiência de celebração. Conheça histórias reais, inspiradoras e transformadoras de mulheres que revolucionam a ciência brasileira.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-note">
+          <p class="testimonial-quote">Inovadora, corajosa — amo como o evento valoriza histórias reais de mulheres cientistas.</p>
+          <p class="testimonial-author">— Participante, 2025</p>
+        </div>
+        <div class="testimonial-note">
+          <p class="testimonial-quote">Adorei conhecer cientistas brasileiras que estão transformando o mundo.</p>
+          <p class="testimonial-author">— Estudante de Engenharia</p>
+        </div>
+        <div class="testimonial-note">
+          <p class="testimonial-quote">Super inspirador, muito bem organizado e com palestras de excelência.</p>
+          <p class="testimonial-author">— Professora Universitária</p>
+        </div>
+        <div class="testimonial-note">
+          <p class="testimonial-quote">Excelente espaço para visibilizar a ciência feita por mulheres no Brasil.</p>
+          <p class="testimonial-author">— Pesquisadora, IF Baiano</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-image">🔍</div>
+          <div class="feature-content">
+            <span class="feature-badge">Explorar</span>
+            <h2 class="feature-title">Descubra histórias inspiradoras</h2>
+            <p class="feature-desc">Conheça trajetórias de mulheres cientistas que rompem barreiras e transformam a ciência brasileira.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-image">🎓</div>
+          <div class="feature-content">
+            <span class="feature-badge">Aprender</span>
+            <h2 class="feature-title">Participar de palestras e workshops</h2>
+            <p class="feature-desc">Palestras inspiradoras, oficinas hands-on e diálogos diretos com mulheres líderes em ciência e inovação.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-image">🤝</div>
+          <div class="feature-content">
+            <span class="feature-badge">Conectar</span>
+            <h2 class="feature-title">Construir redes de colaboração</h2>
+            <p class="feature-desc">Encontre mentoras, parceiras de pesquisa e construa conexões que transformarão sua carreira científica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Radar Section -->
+    <section id="radar">
+      <div class="radar-container">
+        <span class="radar-badge">Programação</span>
+        <h2 class="radar-title">01 a 04 de dezembro de 2026</h2>
+        <p class="radar-desc">Campus Alagoinhas, IF Baiano. Informações sobre a programação oficial, palestras, oficinas e atividades especiais em breve.</p>
+        <div class="radar-image">📅 Programação 01-04 de dezembro</div>
+      </div>
+    </section>
+
+    <!-- CTA Giant -->
+    <a href="#" class="cta-giant">Participe</a>
+  </main>
+
+  <footer>
+    <a href="https://www.ifbaiano.edu.br" target="_blank" rel="noopener" class="footer-logo-link">
+      <img src="logo-if-baiano.png" alt="Instituto Federal de Educação, Ciência e Tecnologia Baiano" class="footer-logo">
+    </a>
+    <p>© 2026 Semana Nacional de Ciência e Tecnologia | Ciência Delas | Campus Alagoinhas, IF Baiano</p>
+  </footer>
+
+  <script>
+    // Smooth scroll behavior is handled by CSS
+    // Optional: Add more interactivity as needed
+  </script>
+</body>
+</html>
