@@ -545,6 +545,47 @@
       color: rgba(255, 255, 255, 0.2);
     }
 
+
+    /* Programação: tabela por dia e turno */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .prog-wrap { margin-top:40px; background:var(--bg-light); border-radius:24px; overflow-x:auto; text-align:left; box-shadow:0 16px 48px rgba(0,0,0,.35); }
+    .prog { width:100%; border-collapse:collapse; }
+    .prog thead th { background:var(--primary); color:#fff; font-size:15px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; padding:16px 20px; text-align:left; }
+    .prog thead th:first-child { background:var(--primary-shadow); color:var(--accent-yellow); }
+    .prog tbody th { background:var(--bg-dark); color:#fff; padding:20px; width:200px; vertical-align:middle; text-align:left; }
+    .prog-dia { display:block; font-size:20px; font-weight:900; color:var(--accent-yellow); line-height:1.2; }
+    .prog-data { display:block; font-size:15px; font-weight:700; color:rgba(255,255,255,.85); margin-top:4px; }
+    .prog td { padding:16px; vertical-align:top; border-bottom:1px solid rgba(96,70,150,.18); border-left:1px solid rgba(96,70,150,.12); }
+    .prog tbody tr:last-child td { border-bottom:none; }
+    .prog tbody tr:nth-child(even) td { background:#f6f2fb; }
+    .prog td { display:table-cell; }
+    .prog td > * + * { margin-top:8px; }
+    .ev { display:block; padding:10px 14px; border-radius:14px; font-size:16px; font-weight:800; line-height:1.3; }
+    .ev-solenidade { background:var(--accent-yellow); color:#4a2f00; }
+    .ev-mesa { background:#fbd6e6; color:#8a0043; }
+    .ev-arte { background:#ffe3cc; color:#8a4600; }
+    .ev-trabalhos { background:#e2d9f5; color:#46316e; }
+    .ev-oficina { background:#f1e4d6; color:#5e3f22; }
+    .ev-vazio { display:block; padding:10px 14px; font-size:15px; font-weight:700; font-style:italic; color:var(--text-gray); }
+    .prog-legenda { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 24px; margin-top:24px; padding:0; color:#c9c7ff; font-size:15px; font-weight:700; }
+    .prog-legenda li { display:flex; align-items:center; gap:8px; }
+    .prog-legenda .sw { width:16px; height:16px; border-radius:5px; display:inline-block; }
+
+    @media (max-width: 760px) {
+      .prog-wrap { background:transparent; box-shadow:none; overflow:visible; border-radius:0; }
+      .prog thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+      .prog, .prog tbody, .prog tr, .prog tbody th, .prog td { display:block; width:100%; }
+      .prog tr { background:var(--bg-light); border-radius:20px; overflow:hidden; margin-bottom:16px; }
+      .prog tbody th { padding:14px 18px; }
+      .prog tbody tr:nth-child(even) td { background:transparent; }
+      .prog td { border-left:none; padding:12px 16px; display:grid; grid-template-columns:72px 1fr; gap:8px 12px; align-items:start; }
+      .prog td > * + * { margin-top:0; }
+      .prog td::before { content:attr(data-turno); grid-row:1 / span 2; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; color:var(--primary); padding-top:10px; }
+      .prog td > * { grid-column:2; }
+      .ev { font-size:15px; }
+      .prog-legenda { justify-content:flex-start; }
+    }
+
     /* Footer */
     footer {
       background: var(--bg-light);
@@ -812,7 +853,7 @@
 
       <div class="intro-chapter">
         <img src="icons/icon-chart.png" alt="" class="chapter-icon" aria-hidden="true">
-        <h2 class="chapter-text">01 a 04 de dezembro: uma semana inteira de ciência</h2>
+        <h2 class="chapter-text">02 a 04 de dezembro: uma semana inteira de ciência</h2>
       </div>
 
       <div class="intro-chapter">
@@ -957,9 +998,48 @@
     <section id="radar">
       <div class="radar-container">
         <span class="radar-badge">Programação</span>
-        <h2 class="radar-title">01 a 04 de dezembro de 2026</h2>
-        <p class="radar-desc">Campus Alagoinhas, IF Baiano. Informações sobre a programação oficial, palestras, oficinas e atividades especiais em breve.</p>
-        <div class="radar-image">📅 Programação 01-04 de dezembro</div>
+        <h2 class="radar-title">02 a 04 de dezembro de 2026</h2>
+        <p class="radar-desc">Campus Alagoinhas, IF Baiano. Confira as atividades de cada dia, por turno.</p>
+        <div class="prog-wrap">
+          <table class="prog">
+            <caption class="sr-only">Programação da SNCT 2026, de 2 a 4 de dezembro, por dia e turno</caption>
+            <thead>
+              <tr>
+                <th scope="col">Dia</th>
+                <th scope="col">Manhã</th>
+                <th scope="col">Tarde</th>
+                <th scope="col">Noite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><span class="prog-dia">Quarta-feira</span><span class="prog-data">02 de dezembro</span></th>
+                <td data-turno="Manhã"><span class="ev ev-solenidade">Solenidade de abertura (diurno)</span><span class="ev ev-mesa">Mesa-redonda ou palestra</span></td>
+                <td data-turno="Tarde"><span class="ev ev-arte">Festival de Teatro e Dança</span><span class="ev ev-trabalhos">Apresentação de trabalhos</span></td>
+                <td data-turno="Noite"><span class="ev ev-solenidade">Solenidade de abertura (noturno)</span></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="prog-dia">Quinta-feira</span><span class="prog-data">03 de dezembro</span></th>
+                <td data-turno="Manhã"><span class="ev ev-oficina">Oficinas</span></td>
+                <td data-turno="Tarde"><span class="ev ev-arte">Festival de Teatro e Dança</span><span class="ev ev-trabalhos">Apresentação de trabalhos</span></td>
+                <td data-turno="Noite"><span class="ev ev-oficina">Oficinas</span></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="prog-dia">Sexta-feira</span><span class="prog-data">04 de dezembro</span></th>
+                <td data-turno="Manhã"><span class="ev ev-oficina">Oficinas</span><span class="ev ev-solenidade">Cerimônia de encerramento (diurno)</span></td>
+                <td data-turno="Tarde"><span class="ev-vazio">Sem atividade</span></td>
+                <td data-turno="Noite"><span class="ev ev-solenidade">Cerimônia de encerramento (noturno)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="prog-legenda" aria-label="Legenda das cores">
+          <li><span class="sw ev-solenidade"></span>Solenidades e cerimônias</li>
+          <li><span class="sw ev-mesa"></span>Mesa-redonda ou palestra</li>
+          <li><span class="sw ev-arte"></span>Teatro e dança</li>
+          <li><span class="sw ev-trabalhos"></span>Apresentação de trabalhos</li>
+          <li><span class="sw ev-oficina"></span>Oficinas</li>
+        </ul>
       </div>
     </section>
 
@@ -969,7 +1049,7 @@
 
   <footer>
     <a href="https://www.ifbaiano.edu.br" target="_blank" rel="noopener" class="footer-logo-link">
-      <img src="logo-if-baiano.png" alt="Instituto Federal de Educação, Ciência e Tecnologia Baiano" class="footer-logo">
+      <img src="logo-if-baiano.png" alt="Instituto Federal Baiano, Campus Alagoinhas" class="footer-logo">
     </a>
     <p>© 2026 Semana Nacional de Ciência e Tecnologia | Ciência Delas | Campus Alagoinhas, IF Baiano</p>
   </footer>
