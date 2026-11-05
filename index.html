@@ -586,6 +586,128 @@
       .prog-legenda { justify-content:flex-start; }
     }
 
+    /* Links Importantes */
+    #links-importantes {
+      background: var(--bg-light);
+      padding: 64px 40px;
+    }
+
+    .links-container {
+      max-width: 1060px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .links-badge {
+      background: #e2d9f5;
+      color: #46316e;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 59px;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .links-title {
+      font-size: 50px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      margin-bottom: 44px;
+    }
+
+    .link-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: left;
+    }
+
+    .link-card {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 40px 44px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(96, 70, 150, 0.08);
+    }
+
+    .link-card-badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 59px;
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      background: #fbd6e6;
+      color: #8a0043;
+    }
+
+    .link-card-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .link-card-desc {
+      font-size: 18px;
+      color: #4a4a54;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .link-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .link-card-image {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto 28px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 59px;
+      font-size: 17px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .link-btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .link-btn-secondary {
+      background: #f1e4d6;
+      color: #5e3f22;
+    }
+
+    @media (max-width: 760px) {
+      .links-title { font-size: 34px; }
+      .link-card { padding: 28px 24px; border-radius: 24px; }
+      .link-card-title { font-size: 22px; }
+      .link-btn { width: 100%; justify-content: center; }
+    }
+
     /* Footer */
     footer {
       background: var(--bg-light);
@@ -1042,6 +1164,27 @@
           <li><span class="sw ev-trabalhos"></span>Apresentação de trabalhos</li>
           <li><span class="sw ev-oficina"></span>Oficinas</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Links Importantes -->
+    <section id="links-importantes">
+      <div class="links-container">
+        <span class="links-badge">Links Importantes</span>
+        <h2 class="links-title">Tudo que você precisa, num só lugar</h2>
+
+        <div class="link-cards">
+          <div class="link-card">
+            <span class="link-card-badge">Submissões de trabalhos</span>
+            <h3 class="link-card-title">Envie seu resumo expandido</h3>
+            <img src="flyer-submissao-resumos.png" alt="Flyer de divulgação: Submissão de Resumos Expandidos SNCT 2026. Quem pode submeter: docentes, estudantes e pesquisadores do IF Baiano e colaboradores externos. Prazo de submissão: de 03 a 10 de novembro. Formato: resumo expandido com no máximo 3 páginas." class="link-card-image">
+            <p class="link-card-desc">A Comissão Organizadora convida docentes, estudantes e pesquisadores a submeterem trabalhos na forma de resumos expandidos (máximo de 3 páginas) para apresentação durante o evento. Prazo de submissão: <strong>03 a 10 de novembro</strong>. Baixe o modelo oficial e envie pelo formulário abaixo.</p>
+            <div class="link-card-actions">
+              <a href="https://forms.gle/G1Nf5C4wupZTRqfj6" target="_blank" rel="noopener" class="link-btn link-btn-primary">📝 Formulário de submissão</a>
+              <a href="modelo-resumo-expandido-snct2026.docx" download class="link-btn link-btn-secondary">📄 Baixar modelo de resumo</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
