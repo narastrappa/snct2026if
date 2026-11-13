@@ -67,47 +67,96 @@
       gap: 16px;
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .header-logo {
       height: 52px;
       width: auto;
       display: block;
     }
 
-    /* Discreet section nav */
+    /* Discreet hamburger nav */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .nav-toggle:hover,
+    .nav-toggle:focus-visible {
+      background: rgba(96, 70, 150, 0.08);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--text);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
     .site-nav {
       position: fixed;
       top: 80px;
-      left: 0;
-      right: 0;
-      height: 40px;
+      right: 60px;
+      min-width: 220px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 0 20px;
-      background: rgba(42, 18, 64, 0.92);
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px;
+      background: rgba(42, 18, 64, 0.97);
       backdrop-filter: blur(8px);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
       z-index: 999;
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
     }
 
-    .site-nav::-webkit-scrollbar {
-      display: none;
+    .site-nav.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     .site-nav a {
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 14px;
       font-weight: 700;
       text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 8px 14px;
-      border-radius: 59px;
+      letter-spacing: 0.02em;
+      padding: 10px 16px;
+      border-radius: 10px;
       transition: color 0.2s ease, background 0.2s ease;
-      flex-shrink: 0;
     }
 
     .site-nav a:hover,
@@ -148,7 +197,7 @@
 
     /* Sections */
     main {
-      padding-top: 120px;
+      padding-top: 80px;
     }
 
     section {
@@ -684,6 +733,47 @@
       color: #5e3f22;
     }
 
+    .docs-subtitle {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #7a5c9e;
+      margin: 32px 0 14px;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: #f6f2fb;
+      border: 1px solid rgba(96, 70, 150, 0.1);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .doc-link:hover {
+      background: #ece2f7;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .doc-link-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 760px) {
       .links-title { font-size: 34px; }
       .link-card { padding: 28px 24px; border-radius: 24px; }
@@ -819,18 +909,13 @@
 
       .site-nav {
         top: 60px;
-        height: 36px;
-        justify-content: flex-start;
-        padding: 0 14px;
-      }
-
-      .site-nav a {
-        font-size: 12px;
-        padding: 6px 12px;
+        right: 20px;
+        left: 20px;
+        min-width: 0;
       }
 
       main {
-        padding-top: 96px;
+        padding-top: 60px;
       }
 
       .header-logo {
@@ -931,13 +1016,18 @@
     <a href="#intro" class="logo-group">
       <img src="logo-ciencia-delas.png" alt="Ciência Delas, SNCT 2026" class="header-logo">
     </a>
-    <a href="https://www.ifbaiano.edu.br" target="_blank" rel="noopener" class="logo-group">
-      <img src="logo-if-baiano-alagoinhas.png" alt="Instituto Federal Baiano, Campus Alagoinhas" class="header-logo">
-    </a>
+    <div class="header-right">
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu de seções">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://www.ifbaiano.edu.br" target="_blank" rel="noopener" class="logo-group">
+        <img src="logo-if-baiano-alagoinhas.png" alt="Instituto Federal Baiano, Campus Alagoinhas" class="header-logo">
+      </a>
+    </div>
   </header>
 
   <!-- Nav de seções -->
-  <nav class="site-nav" aria-label="Navegação de seções">
+  <nav class="site-nav" id="siteNav" aria-label="Navegação de seções">
     <a href="#intro">Início</a>
     <a href="#problem">Contexto</a>
     <a href="#meet">Cientistas</a>
@@ -946,6 +1036,39 @@
     <a href="#radar">Radar</a>
     <a href="#links-importantes">Links importantes</a>
   </nav>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('siteNav');
+      if (!toggle || !nav) return;
+
+      function closeNav() {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeNav);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          closeNav();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeNav();
+      });
+    })();
+  </script>
 
   <main>
     <!-- Intro Section -->
@@ -1156,6 +1279,19 @@
             <div class="link-card-actions">
               <a href="https://forms.gle/G1Nf5C4wupZTRqfj6" target="_blank" rel="noopener" class="link-btn link-btn-primary">📝 Formulário de submissão</a>
               <a href="modelo-resumo-expandido-snct2026.docx" download class="link-btn link-btn-secondary">📄 Baixar modelo de resumo</a>
+            </div>
+
+            <p class="docs-subtitle">Modelos para apresentação</p>
+            <div class="docs-grid">
+              <a href="modelo-apresentacao-snct2026.pptx" download class="doc-link"><span class="doc-link-icon">🖥️</span> Modelo de apresentação (slides)</a>
+              <a href="modelo-banner-poster-snct2026.pptx" download class="doc-link"><span class="doc-link-icon">🖼️</span> Modelo de banner/pôster</a>
+            </div>
+
+            <p class="docs-subtitle">Fichas de avaliação</p>
+            <div class="docs-grid">
+              <a href="ficha-avaliacao-resumo-snct2026.docx" download class="doc-link"><span class="doc-link-icon">📋</span> Ficha — Resumo submetido</a>
+              <a href="ficha-avaliacao-oral-snct2026.docx" download class="doc-link"><span class="doc-link-icon">📋</span> Ficha — Apresentação oral</a>
+              <a href="ficha-avaliacao-poster-snct2026.docx" download class="doc-link"><span class="doc-link-icon">📋</span> Ficha — Apresentação em pôster</a>
             </div>
           </div>
         </div>
