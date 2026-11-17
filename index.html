@@ -584,15 +584,20 @@
     .prog { width:100%; border-collapse:collapse; }
     .prog thead th { background:var(--primary); color:#fff; font-size:15px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; padding:16px 20px; text-align:left; }
     .prog thead th:first-child { background:var(--primary-shadow); color:var(--accent-yellow); }
-    .prog tbody th { background:var(--bg-dark); color:#fff; padding:20px; width:200px; vertical-align:middle; text-align:left; }
+    .prog thead th:not(:first-child) { text-transform:none; letter-spacing:0; }
+    .prog thead th .prog-dia { font-size:19px; }
+    .prog thead th .prog-data { font-size:14px; }
+    .prog tbody th { background:var(--bg-dark); color:#fff; padding:20px; width:130px; vertical-align:middle; text-align:left; }
+    .prog-turno { display:block; font-size:20px; font-weight:900; color:var(--accent-yellow); }
     .prog-dia { display:block; font-size:20px; font-weight:900; color:var(--accent-yellow); line-height:1.2; }
     .prog-data { display:block; font-size:15px; font-weight:700; color:rgba(255,255,255,.85); margin-top:4px; }
-    .prog td { padding:16px; vertical-align:top; border-bottom:1px solid rgba(96,70,150,.18); border-left:1px solid rgba(96,70,150,.12); }
+    .prog td { padding:16px; vertical-align:top; width:29%; border-bottom:1px solid rgba(96,70,150,.18); border-left:1px solid rgba(96,70,150,.12); }
     .prog tbody tr:last-child td { border-bottom:none; }
     .prog tbody tr:nth-child(even) td { background:#f6f2fb; }
     .prog td { display:table-cell; }
     .prog td > * + * { margin-top:8px; }
     .ev { display:block; padding:10px 14px; border-radius:14px; font-size:16px; font-weight:800; line-height:1.3; }
+    .ev small { display:block; margin-top:4px; font-size:14px; font-weight:600; line-height:1.35; }
     .ev-solenidade { background:var(--accent-yellow); color:#4a2f00; }
     .ev-mesa { background:#fbd6e6; color:#8a0043; }
     .ev-arte { background:#ffe3cc; color:#8a4600; }
@@ -610,9 +615,9 @@
       .prog tr { background:var(--bg-light); border-radius:20px; overflow:hidden; margin-bottom:16px; }
       .prog tbody th { padding:14px 18px; }
       .prog tbody tr:nth-child(even) td { background:transparent; }
-      .prog td { border-left:none; padding:12px 16px; display:grid; grid-template-columns:72px 1fr; gap:8px 12px; align-items:start; }
+      .prog td { border-left:none; width:100%; padding:12px 16px; display:grid; grid-template-columns:84px 1fr; gap:8px 12px; align-items:start; }
       .prog td > * + * { margin-top:0; }
-      .prog td::before { content:attr(data-turno); grid-row:1 / span 2; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; color:var(--primary); padding-top:10px; }
+      .prog td::before { content:attr(data-dia); grid-row:1 / span 2; font-size:13px; font-weight:900; text-transform:uppercase; letter-spacing:.06em; color:var(--primary); padding-top:10px; }
       .prog td > * { grid-column:2; }
       .ev { font-size:15px; }
       .prog-legenda { justify-content:flex-start; }
@@ -1223,33 +1228,33 @@
         <p class="radar-desc">Campus Alagoinhas, IF Baiano. Confira as atividades de cada dia, por turno.</p>
         <div class="prog-wrap">
           <table class="prog">
-            <caption class="sr-only">Programação da SNCT 2026, de 2 a 4 de dezembro, por dia e turno</caption>
+            <caption class="sr-only">Programação da SNCT 2026, de 2 a 4 de dezembro, por turno e dia</caption>
             <thead>
               <tr>
-                <th scope="col">Dia</th>
-                <th scope="col">Manhã</th>
-                <th scope="col">Tarde</th>
-                <th scope="col">Noite</th>
+                <th scope="col">Turno</th>
+                <th scope="col"><span class="prog-dia">Quarta-feira</span><span class="prog-data">02 de dezembro</span></th>
+                <th scope="col"><span class="prog-dia">Quinta-feira</span><span class="prog-data">03 de dezembro</span></th>
+                <th scope="col"><span class="prog-dia">Sexta-feira</span><span class="prog-data">04 de dezembro</span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><span class="prog-dia">Quarta-feira</span><span class="prog-data">02 de dezembro</span></th>
-                <td data-turno="Manhã"><span class="ev ev-solenidade">Solenidade de abertura (diurno)</span><span class="ev ev-mesa">Mesa-redonda</span></td>
-                <td data-turno="Tarde"><span class="ev ev-arte">Festival de Teatro e Dança</span><span class="ev ev-trabalhos">Apresentação de trabalhos</span></td>
-                <td data-turno="Noite"><span class="ev ev-solenidade">Solenidade de abertura (noturno)</span></td>
+                <th scope="row"><span class="prog-turno">Manhã</span></th>
+                <td data-dia="Qua 02/12"><span class="ev ev-solenidade">Solenidade de abertura</span><span class="ev ev-mesa">Mesa-redonda<small>Ciências Delas: mulheres que transformam o mundo e inspiram novos futuros</small></span><span class="ev ev-arte">Feira de Agricultura Familiar e Economia Solidária</span></td>
+                <td data-dia="Qui 03/12"><span class="ev ev-arte">Mostra Delas</span><span class="ev ev-arte">Equoterapia</span><span class="ev ev-arte">Exposição artística Mãos Femininas</span></td>
+                <td data-dia="Sex 04/12"><span class="ev ev-mesa">Palestra<small>Como a tecnologia influencia nossa atenção, memória, emoções e aprendizagem?</small></span><span class="ev ev-arte">Bingo</span><span class="ev ev-arte">Samba de Roda</span></td>
               </tr>
               <tr>
-                <th scope="row"><span class="prog-dia">Quinta-feira</span><span class="prog-data">03 de dezembro</span></th>
-                <td data-turno="Manhã"><span class="ev ev-oficina">Oficinas</span></td>
-                <td data-turno="Tarde"><span class="ev ev-arte">Festival de Teatro e Dança</span><span class="ev ev-trabalhos">Apresentação de trabalhos</span></td>
-                <td data-turno="Noite"><span class="ev ev-oficina">Oficinas</span></td>
+                <th scope="row"><span class="prog-turno">Tarde</span></th>
+                <td data-dia="Qua 02/12"><span class="ev ev-arte">Cine Negro Delas<small>Exibição de curtas e roda de conversa</small></span><span class="ev ev-arte">Feira de Agricultura Familiar e Economia Solidária</span></td>
+                <td data-dia="Qui 03/12"><span class="ev ev-oficina">Oficinas</span></td>
+                <td data-dia="Sex 04/12"><span class="ev-vazio">Sem atividade</span></td>
               </tr>
               <tr>
-                <th scope="row"><span class="prog-dia">Sexta-feira</span><span class="prog-data">04 de dezembro</span></th>
-                <td data-turno="Manhã"><span class="ev ev-oficina">Oficinas</span><span class="ev ev-solenidade">Cerimônia de encerramento (diurno)</span></td>
-                <td data-turno="Tarde"><span class="ev-vazio">Sem atividade</span></td>
-                <td data-turno="Noite"><span class="ev ev-solenidade">Cerimônia de encerramento (noturno)</span></td>
+                <th scope="row"><span class="prog-turno">Noite</span></th>
+                <td data-dia="Qua 02/12"><span class="ev ev-solenidade">Solenidade de abertura</span></td>
+                <td data-dia="Qui 03/12"><span class="ev ev-oficina">Oficinas</span></td>
+                <td data-dia="Sex 04/12"><span class="ev ev-solenidade">Cerimônia de encerramento</span></td>
               </tr>
             </tbody>
           </table>
@@ -1257,8 +1262,7 @@
         <ul class="prog-legenda" aria-label="Legenda das cores">
           <li><span class="sw ev-solenidade"></span>Solenidades e cerimônias</li>
           <li><span class="sw ev-mesa"></span>Mesa-redonda ou palestra</li>
-          <li><span class="sw ev-arte"></span>Teatro e dança</li>
-          <li><span class="sw ev-trabalhos"></span>Apresentação de trabalhos</li>
+          <li><span class="sw ev-arte"></span>Cultura, mostras e exposições</li>
           <li><span class="sw ev-oficina"></span>Oficinas</li>
         </ul>
       </div>
